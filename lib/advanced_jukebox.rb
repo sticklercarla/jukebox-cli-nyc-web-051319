@@ -1,16 +1,16 @@
 #Here is the song hash you will be working with. Each key is a song name and each value is the location of it's mp3 file.
 #make sure to edit the value of each key to replace < path to this directory >
 #with the correct path to this directory on your computer
-
-my_songs = {
-"Go Go GO" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/01.mp3',
-"LiberTeens" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/02.mp3',
-"Hamburg" =>  '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/03.mp3',
-"Guiding Light" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/04.mp3',
-"Wolf" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/05.mp3',
-"Blue" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/06.mp3',
-"Graduation Failed" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/07.mp3'
-}
+require "pry"
+# my_songs = {
+# "Go Go GO" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/01.mp3',
+# "LiberTeens" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/02.mp3',
+# "Hamburg" =>  '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/03.mp3',
+# "Guiding Light" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/04.mp3',
+# "Wolf" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/05.mp3',
+# "Blue" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/06.mp3',
+# "Graduation Failed" => '/Users/carlastickler/Desktop/Development/jukebox-cli-nyc-web-051319/audio/Emerald-Park/07.mp3'
+# }
 
 def help
   #this method should be the same as in jukebox.rb
@@ -42,7 +42,7 @@ def play(my_songs)
   puts "Please enter a song name or number:"
   user_choice = gets.chomp
   picked_song = nil
-  songs.key do |song|
+  my_songs.keys.each do |song|
     if user_choice == song
       picked_song = song
     end
@@ -51,6 +51,7 @@ def play(my_songs)
     puts "Invalid input, please try again"
   else
     puts "Playing #{picked_song}"
+    # binding.pry
     system "open" << my_songs[picked_song]
   end
 end
